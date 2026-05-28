@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	html {
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+	body {
+		@apply bg-paper text-ink font-sans;
+	}
+	::selection {
+		background-color: #fef3c7;
+		color: #92400e;
+	}
+}
+
+@layer components {
+	/* Section divider — 8-point star + label + line */
+	.section-divider {
+		@apply flex items-center gap-4 my-9;
+	}
+	.section-divider-label {
+		@apply text-[11px] tracking-[0.12em] uppercase text-faint font-medium;
+	}
+	.section-divider-line {
+		@apply flex-1 h-px bg-line;
+	}
+
+	/* Tag pill (monospace, for category labels) */
+	.tag {
+		@apply text-[11px] font-mono px-2.5 py-[3px] rounded-full bg-[#f4f0e8] text-muted border border-line;
+	}
+
+	/* Status badges */
+	.badge-live {
+		@apply text-[10px] uppercase tracking-[0.06em] font-medium px-2 py-[2px] rounded bg-green-100 text-green-800;
+	}
+	.badge-soon {
+		@apply text-[10px] uppercase tracking-[0.06em] font-medium px-2 py-[2px] rounded bg-amber-soft text-amber-800;
+	}
+}
