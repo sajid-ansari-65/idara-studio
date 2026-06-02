@@ -34,7 +34,7 @@ const FOOTER_COLS = [
 			{ label: "About",      href: "/about" },
 			{ label: "Philosophy", href: "/about#principles" },
 			{ label: "Roadmap",    href: "/plugins" },
-			{ label: "Contact",    href: "mailto:hello@idara.studio" },
+			// { label: "Contact",    href: "mailto:hello@idara.studio" },
 		],
 	},
 	{
@@ -42,7 +42,7 @@ const FOOTER_COLS = [
 		links: [
 			{ label: "Documentation", href: "/docs" },
 			{ label: "WordPress.org", href: "https://wordpress.org/plugins/idara-reading-time/" },
-			{ label: "GitHub",        href: "https://github.com/" },
+			{ label: "GitHub",        href: "https://github.com/sajid-ansari-65/" },
 		],
 	},
 ];

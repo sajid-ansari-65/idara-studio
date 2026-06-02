@@ -6,6 +6,62 @@ interface IconProps {
 	className?: string;
 }
 
+/* ── Brand logomark ────────────────────────────────────────────────────── */
+
+/** Geometrically exact 8-pointed khatim (two superimposed squares, r_inner/r_outer = 0.7654). */
+const MARK_STAR =
+	"M16 1 L20.394 5.393 L26.607 5.393 L26.607 11.606 L31 16 L26.607 20.394 L26.607 26.607 L20.394 26.607 L16 31 L11.606 26.607 L5.393 26.607 L5.393 20.394 L1 16 L5.393 11.606 L5.393 5.393 L11.606 5.393Z";
+/** Eight facet rays from centre to each outer tip — reads as radiance / a cut gem. */
+const MARK_FACETS =
+	"M16 16L16 1M16 16L26.607 5.393M16 16L31 16M16 16L26.607 26.607M16 16L16 31M16 16L5.393 26.607M16 16L1 16M16 16L5.393 5.393";
+
+/**
+ * Idara logomark — the "lit star".
+ * Brand mode (default): amber gradient body. Pass `color` for a solid, per-plugin
+ * tint (teal/green/pink). `id` must be unique if several gradient marks share a page.
+ */
+export function IdaraMark({
+	size = 28,
+	color,
+	id = "idara-mark",
+	className = "",
+}: {
+	size?: number;
+	color?: string;
+	id?: string;
+	className?: string;
+}) {
+	return (
+		<svg
+			width={size}
+			height={size}
+			viewBox="0 0 32 32"
+			role="img"
+			aria-label="Idara"
+			className={className}
+		>
+			{!color && (
+				<defs>
+					<linearGradient id={id} x1="6" y1="3" x2="26" y2="29" gradientUnits="userSpaceOnUse">
+						<stop offset="0" stopColor="#d97706" />
+						<stop offset="1" stopColor="#a3450a" />
+					</linearGradient>
+				</defs>
+			)}
+			<path d={MARK_STAR} fill={color ?? `url(#${id})`} />
+			<path
+				d={MARK_FACETS}
+				fill="none"
+				stroke="#fde68a"
+				strokeWidth="0.5"
+				strokeLinecap="round"
+				opacity={color ? 0.3 : 0.45}
+			/>
+			<circle cx="16" cy="16" r="2.3" fill="#fef3c7" />
+		</svg>
+	);
+}
+
 /** 8-pointed star — Islamic geometric motif used as section divider */
 export function StarEight({ size = 14, className = "" }: IconProps) {
 	return (

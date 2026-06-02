@@ -20,7 +20,7 @@ const PRINCIPLES = [
 	{
 		n: "03",
 		t: "Honest open source",
-		b: "Everything is GPL-2.0-or-later. The source on WordPress.org is the source. No paid pro version waiting in the wings.",
+		b: "Everything on WordPress.org is GPL-2.0-or-later, and the free core is genuinely useful — never a crippled trial. If a Pro tier ever ships, it extends the free plugin rather than holding it hostage.",
 	},
 	{
 		n: "04",

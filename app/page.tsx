@@ -147,7 +147,7 @@ export default function HomePage() {
 					},
 					{
 						title: "Honest defaults",
-						body: "No tracking. No external requests. No telemetry. GPL-2.0-or-later. The source is the source — there's no premium upgrade waiting behind a paywall.",
+						body: "No tracking. No external requests. No telemetry. GPL-2.0-or-later. Every plugin's core is free and genuinely useful — never a crippled trial. If a Pro tier ever ships, it adds to that, it doesn't gate it.",
 					},
 				].map((p) => (
 					<div key={p.title}>
