@@ -31,7 +31,8 @@ const amiri = Amiri({
 });
 
 export const metadata: Metadata = {
-	metadataBase: new URL("https://idara.studio"),
+	// TODO: switch back to https://idara.studio once the custom domain is live
+	metadataBase: new URL("https://idara-studio.vercel.app"),
 	title: {
 		default: "Idara — The studio that lights up your editor",
 		template: "%s · Idara",
@@ -52,7 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 			lang="en"
 			className={`${fraunces.variable} ${inter.variable} ${mono.variable} ${amiri.variable}`}
 		>
-			<body>
+			<body suppressHydrationWarning>
 				<Nav />
 				{children}
 				<Footer />

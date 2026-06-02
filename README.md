@@ -1,6 +1,6 @@
 # Idara Studio
 
-The marketing site for [Idara](https://idara.studio) — a small studio crafting careful, single-purpose Gutenberg blocks for WordPress.
+The marketing site for [Idara](https://idara-studio.vercel.app) — a small studio crafting careful, single-purpose Gutenberg blocks for WordPress.
 
 > *The studio that lights up your editor.*
 
