@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Inter, JetBrains_Mono, Amiri } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/chrome";
 import "./globals.css";
@@ -57,6 +58,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 				<Nav />
 				{children}
 				<Footer />
+				<Analytics />
 			</body>
 		</html>
 	);
