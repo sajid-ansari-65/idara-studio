@@ -24,6 +24,40 @@ export const PLUGINS: Plugin[] = [
 		requires: { wp: "6.4+", php: "7.4+" },
 		tags: ["utility", "blog", "FSE-ready", "performance"],
 		wporgUrl: "https://wordpress.org/plugins/idara-reading-time/",
+		screenshots: [
+			{
+				src: "/plugins/reading-time/screenshot-1.png",
+				caption: 'Block in the WordPress inserter — find it by searching "Reading Time".',
+			},
+			{
+				src: "/plugins/reading-time/screenshot-2.png",
+				caption: "Block selected in the editor, with toolbar shortcuts for icon cycling and range toggle.",
+			},
+			{
+				src: "/plugins/reading-time/screenshot-3.png",
+				caption: "Block settings sidebar — Display, Calculation, and Scroll progress bar panels.",
+			},
+			{
+				src: "/plugins/reading-time/screenshot-4.png",
+				caption: "Display panel — icon style picker, Single/Range format toggle, and custom prefix/suffix.",
+			},
+			{
+				src: "/plugins/reading-time/screenshot-5.png",
+				caption: "Calculation panel — adjustable words-per-minute (default 200) and hide-on-short-posts.",
+			},
+			{
+				src: "/plugins/reading-time/screenshot-6.png",
+				caption: "Scroll progress bar panel — enable toggle, live preview, position, height, and color.",
+			},
+			{
+				src: "/plugins/reading-time/screenshot-7.png",
+				caption: "Frontend — reading time with a clock icon, scroll progress bar pinned to the page.",
+			},
+			{
+				src: "/plugins/reading-time/screenshot-8.png",
+				caption: "Frontend — reading time with an hourglass icon below the post title in a blog layout.",
+			},
+		],
 		features: [
 			"Server-side calculation — always accurate after edits",
 			"Adjustable WPM (50–600)",

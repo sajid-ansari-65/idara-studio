@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import type { Plugin } from "@/types/plugin";
-import { ClockIcon } from "@/components/icons";
 
 type TabKey = "overview" | "settings" | "installation" | "changelog";
 
@@ -52,38 +52,8 @@ function Overview({ plugin }: { plugin: Plugin }) {
 	return (
 		<div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-8">
 			<div>
-				{/* Playground demo placeholder */}
-				<div className="bg-ink rounded-xl overflow-hidden mb-7">
-					<div className="bg-[#1a1a1f] px-4 py-2.5 flex items-center gap-2">
-						<div className="flex gap-1.5">
-							<div className="w-2.5 h-2.5 rounded-full bg-[#3a3a3f]" />
-							<div className="w-2.5 h-2.5 rounded-full bg-[#3a3a3f]" />
-							<div className="w-2.5 h-2.5 rounded-full bg-[#3a3a3f]" />
-						</div>
-						<span className="text-[11px] text-faint ml-2 font-mono">
-							wordpress-playground.local — {plugin.fullName}
-						</span>
-					</div>
-					<div className="h-72 flex flex-col items-center justify-center gap-3.5 p-10">
-						<div
-							className="w-13 h-13 rounded-xl flex items-center justify-center"
-							style={{ background: plugin.bg }}
-						>
-							<ClockIcon color={plugin.color} size={28} />
-						</div>
-						<p className="text-[14px] text-[#a8a8b0] m-0 text-center max-w-[320px] leading-relaxed">
-							A live WordPress instance with this plugin pre-installed. Try the
-							block in a real editor — no installation required.
-						</p>
-						<button
-							type="button"
-							className="text-white border-none px-4.5 py-2 text-[13px] rounded-md cursor-pointer font-medium"
-							style={{ background: plugin.color }}
-						>
-							Launch Playground ▶
-						</button>
-					</div>
-				</div>
+				{/* Screenshots */}
+				<ScreenshotGallery plugin={plugin} />
 
 				{/* Features list */}
 				<div className="bg-surface border border-line rounded-xl p-7">
@@ -148,6 +118,82 @@ function Overview({ plugin }: { plugin: Plugin }) {
 					</a>
 				</div>
 			</aside>
+		</div>
+	);
+}
+
+/* ── Screenshot gallery ────────────────────────────────────────────────── */
+
+function ScreenshotGallery({ plugin }: { plugin: Plugin }) {
+	const shots = plugin.screenshots ?? [];
+	const [active, setActive] = useState(0);
+
+	if (shots.length === 0) return null;
+
+	const current = shots[Math.min(active, shots.length - 1)];
+
+	return (
+		<div className="mb-7">
+			{/* Framed main viewer */}
+			<div className="bg-surface border border-line rounded-xl overflow-hidden">
+				<div className="bg-paper border-b border-line px-4 py-2.5 flex items-center gap-2">
+					<div className="flex gap-1.5">
+						<span className="w-2.5 h-2.5 rounded-full bg-line" />
+						<span className="w-2.5 h-2.5 rounded-full bg-line" />
+						<span className="w-2.5 h-2.5 rounded-full bg-line" />
+					</div>
+					<span className="text-[11px] text-faint ml-2 font-mono">
+						{plugin.fullName} — {active + 1} / {shots.length}
+					</span>
+				</div>
+
+				<div className="relative h-[300px] sm:h-[420px] bg-paper">
+					<Image
+						key={current.src}
+						src={current.src}
+						alt={current.caption}
+						fill
+						sizes="(max-width: 1024px) 100vw, 720px"
+						className="object-contain"
+						priority={active === 0}
+					/>
+				</div>
+
+				<div className="px-5 py-3.5 border-t border-line">
+					<p className="text-[13px] text-muted m-0 leading-relaxed">
+						<span className="font-mono text-faint mr-2">{active + 1}.</span>
+						{current.caption}
+					</p>
+				</div>
+			</div>
+
+			{/* Thumbnail strip */}
+			<div className="flex gap-2 mt-3 overflow-x-auto pb-1">
+				{shots.map((s, i) => {
+					const isActive = i === active;
+					return (
+						<button
+							key={s.src}
+							type="button"
+							onClick={() => setActive(i)}
+							aria-label={`View screenshot ${i + 1}`}
+							aria-current={isActive}
+							className={`relative flex-shrink-0 w-[84px] h-[56px] rounded-md overflow-hidden bg-paper cursor-pointer transition-opacity ${
+								isActive ? "" : "border border-line opacity-60 hover:opacity-100"
+							}`}
+							style={isActive ? { boxShadow: `0 0 0 2px ${plugin.color}` } : undefined}
+						>
+							<Image
+								src={s.src}
+								alt=""
+								fill
+								sizes="84px"
+								className="object-cover object-top"
+							/>
+						</button>
+					);
+				})}
+			</div>
 		</div>
 	);
 }

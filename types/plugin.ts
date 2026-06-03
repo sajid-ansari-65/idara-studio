@@ -23,6 +23,12 @@ export interface PluginRequires {
 	php: string;
 }
 
+export interface PluginScreenshot {
+	/** Path under /public, e.g. /plugins/reading-time/screenshot-1.png */
+	src: string;
+	caption: string;
+}
+
 export interface Plugin {
 	slug: string;
 	name: string;
@@ -41,6 +47,7 @@ export interface Plugin {
 	/* Live-only fields */
 	version?: string;
 	requires?: PluginRequires;
+	screenshots?: PluginScreenshot[];
 	features?: string[];
 	settings?: PluginSetting[];
 	changelog?: PluginChangelogEntry[];

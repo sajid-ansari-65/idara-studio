@@ -129,12 +129,6 @@ function LivePluginView({ plugin }: { plugin: Plugin }) {
 							>
 								Download from WordPress.org ↓
 							</a>
-							<button
-								type="button"
-								className="bg-surface text-ink border border-line px-[22px] py-[11px] text-[14px] font-medium rounded-lg cursor-pointer"
-							>
-								Try in Playground ▶
-							</button>
 						</div>
 					</div>
 				</div>
